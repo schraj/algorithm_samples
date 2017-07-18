@@ -1,0 +1,25 @@
+{
+  "name": "algorithm_samples",
+  "version": "1.0.0",
+  "description": "Sample algorithms and tests in javascript",
+  "main": "linkedlist.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schraj/algorithm_samples.git"
+  },
+  "keywords": [
+    "algorithms"
+  ],
+  "author": "jeremy schrader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schraj/algorithm_samples/issues"
+  },
+  "homepage": "https://github.com/schraj/algorithm_samples#readme",
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}
