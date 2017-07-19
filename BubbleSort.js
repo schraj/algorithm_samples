@@ -4,15 +4,15 @@ class BubbleSort {
   }
     
   sort() {
-    let endIndex = this.input.length;
+    let endIndex = this.data.length;
 
-    for (let i = 0; i<this.input.length; i++){
+    for (let i = 0; i<this.data.length; i++){
       for (let j = 0; i<endIndex; i++){
-        const currentValue = this.input[i];
-        const nextValue = this.input[i + 1];
+        const currentValue = this.data[i];
+        const nextValue = this.data[i + 1];
         if (currentValue > nextValue){
-          this.input[i] = nextValue;
-          this.input[i+1]=currentValue;
+          this.data[i] = nextValue;
+          this.data[i+1]=currentValue;
         }        
       }  
       endIndex = endIndex -1;    

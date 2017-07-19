@@ -1,4 +1,4 @@
-class SinglyLinkedList {
+class DoublyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -88,4 +88,4 @@ class SinglyLinkedList {
   }
 }
 
-module.exports=LinkedList;
+module.exports=DoublyLinkedList;
