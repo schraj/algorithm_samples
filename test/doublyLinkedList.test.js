@@ -1,4 +1,4 @@
-const DoublyLinkedList = require('../DoublyLinkedlist');
+const DoublyLinkedList = require('../src/lists/DoublyLinkedlist');
 const assert = require('assert');
 
 describe('DoublyLinkedList', function () {

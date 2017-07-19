@@ -1,4 +1,4 @@
-const SinglyLinkedList = require('../singlyLinkedlist');
+const SinglyLinkedList = require('../src/lists/singlyLinkedlist');
 const assert = require('assert');
 
 describe('SinglyLinkedList', function () {
