@@ -4,7 +4,8 @@
   "description": "Sample algorithms and tests in javascript",
   "main": "linkedlist.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test-watch": "mocha --watch"
   },
   "repository": {
     "type": "git",
