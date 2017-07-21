@@ -1,4 +1,4 @@
-class BubbleSort {
+class InsertionSort {
   constructor(data) {
     this.data = data;
   }
@@ -20,4 +20,4 @@ class BubbleSort {
   }
 }
 
-module.exports=BubbleSort;
+module.exports=InsertionSort;
