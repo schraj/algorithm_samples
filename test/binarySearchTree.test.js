@@ -1,4 +1,5 @@
-const BinarySearchTree = require("../src/trees/binarySearchTree");
+const BinarySearchTree = require("../src/trees/BinarySearchTree");
+const are_identical = require("../src/trees/Utility");
 const assert = require("assert");
 
 describe("BinarySearchTree", function() {
@@ -37,12 +38,59 @@ describe("BinarySearchTree", function() {
     const bst = createTree(10);
     bst.levelTraverseQueueIterative();
   });
+
+  it("should find minNode", function() {
+    const bst = createTree(10);
+    const result = bst.minNodeFromRoot();
+  });
+
+  it("should find maxNode", function() {
+    const bst = createTree(20);
+    const result = bst.maxNodeFromRoot();
+  });
+
+  it("should find contained item", function() {
+    const bst = createTree(20);
+    bst.push(32);
+    const result = bst.contains(32);
+    assert.equal(result.value, 32);
+  });
+
+  it("should not find non-existent item", function() {
+    const bst = createTree(20);
+    const result = bst.contains(33);
+    assert.equal(result, null);
+  });
+
+  it("should run a callback function on each item", function() {
+    const bst = createTree(10);
+    bst.depthFirstLog(node => console.log("Node Value:" + node.value));
+  });
+
+  it("should identify equality in same tree", function() {
+    const bst1 = createTree(10);
+    const result = are_identical(bst1.root, bst1.root);
+    assert.equal(result, true);
+  });
+
+  it("should identify inequality in same tree", function() {
+    const bst1 = new BinarySearchTree();
+    bst1.push(2);
+    bst1.push(3);
+    bst1.push(4);
+    const bst2 = new BinarySearchTree();
+    bst2.push(2);
+    bst2.push(3);
+    bst2.push(1);
+    const result = are_identical(bst1.root, bst2.root);
+    assert.notEqual(result, true);
+  });
 });
 
 const createTree = itemCount => {
   const bst = new BinarySearchTree();
   for (let i = 0; i < itemCount; i++) {
-    let val = Math.ceil(Math.random * i);
+    let val = Math.ceil(Math.random() * itemCount);
     bst.push(val);
   }
   return bst;
