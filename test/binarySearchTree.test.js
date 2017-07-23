@@ -2,8 +2,8 @@ const BinarySearchTree = require("../src/trees/BinarySearchTree");
 const are_identical = require("../src/trees/Utility");
 const assert = require("assert");
 
-describe("BinarySearchTree", function() {
-  it("should create a search tree root node", function() {
+describe("BinarySearchTree", function () {
+  it("should create a search tree root node", function () {
     const bst = new BinarySearchTree();
     bst.push(2);
     const expected = 2;
@@ -12,7 +12,7 @@ describe("BinarySearchTree", function() {
     assert.equal(bst.root.right, null);
   });
 
-  it("should create a balanced search tree", function() {
+  it("should create a balanced search tree", function () {
     const bst = new BinarySearchTree();
     bst.push(2);
     bst.push(3);
@@ -23,7 +23,7 @@ describe("BinarySearchTree", function() {
     assert.equal(bst.root.right.value, 3);
   });
 
-  it("should create a balanced search tree", function() {
+  it("should create a balanced search tree", function () {
     const bst = new BinarySearchTree();
     bst.push(2);
     bst.push(3);
@@ -34,46 +34,46 @@ describe("BinarySearchTree", function() {
     assert.equal(bst.root.right.value, 3);
   });
 
-  it("should traverse binary tree in level-order", function() {
+  it("should traverse binary tree in level-order", function () {
     const bst = createTree(10);
     bst.levelTraverseQueueIterative();
   });
 
-  it("should find minNode", function() {
+  it("should find minNode", function () {
     const bst = createTree(10);
     const result = bst.minNodeFromRoot();
   });
 
-  it("should find maxNode", function() {
+  it("should find maxNode", function () {
     const bst = createTree(20);
     const result = bst.maxNodeFromRoot();
   });
 
-  it("should find contained item", function() {
+  it("should find contained item", function () {
     const bst = createTree(20);
     bst.push(32);
     const result = bst.contains(32);
     assert.equal(result.value, 32);
   });
 
-  it("should not find non-existent item", function() {
+  it("should not find non-existent item", function () {
     const bst = createTree(20);
     const result = bst.contains(33);
     assert.equal(result, null);
   });
 
-  it("should run a callback function on each item", function() {
+  it("should run a callback function on each item", function () {
     const bst = createTree(10);
     bst.depthFirstLog(node => console.log("Node Value:" + node.value));
   });
 
-  it("should identify equality in same tree", function() {
+  it("should identify equality in same tree", function () {
     const bst1 = createTree(10);
     const result = are_identical(bst1.root, bst1.root);
     assert.equal(result, true);
   });
 
-  it("should identify inequality in same tree", function() {
+  it("should identify inequality in same tree", function () {
     const bst1 = new BinarySearchTree();
     bst1.push(2);
     bst1.push(3);
