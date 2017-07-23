@@ -35,11 +35,11 @@ class BinarySearchTree {
       this.depthFirstLog_recursive(node.left, callback);
     }
 
+    callback(node);
+
     if (node.right) {
       this.depthFirstLog_recursive(node.right, callback);
     }
-
-    return callback(node);
   }
 
   push(val) {

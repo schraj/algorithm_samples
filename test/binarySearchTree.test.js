@@ -63,7 +63,7 @@ describe("BinarySearchTree", function () {
   });
 
   it("should run a callback function on each item", function () {
-    const bst = createTree(10);
+    const bst = createTree(1);
     bst.depthFirstLog(node => console.log("Node Value:" + node.value));
   });
 
@@ -89,8 +89,13 @@ describe("BinarySearchTree", function () {
 
 const createTree = itemCount => {
   const bst = new BinarySearchTree();
+  const uniq = new Set();
   for (let i = 0; i < itemCount; i++) {
     let val = Math.ceil(Math.random() * itemCount);
+    while (uniq.has(val)) {
+      val = Math.ceil(Math.random() * itemCount);
+    }
+    uniq.add(val);
     bst.push(val);
   }
   return bst;
