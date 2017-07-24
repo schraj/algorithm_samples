@@ -86,7 +86,7 @@ describe("BinarySearchTree", function () {
     assert.notEqual(result, true);
   });
 
-  it("should find max depth", function () {
+  xit("should find max depth", function () {
     const bst = createTree(10);
     const result = bst.findDiameter();
     //assert.equal(result, true);
