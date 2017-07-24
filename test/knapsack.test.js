@@ -15,10 +15,10 @@ describe("knapsack", function () {
   });
 
   it("should test random list", function () {
-    const items = createItems(10);
+    const items = createItems(1);
     const ks = new Knapsack(items, 20);
     const results = ks.fill();
-    console.log(results);
+    //console.log(results);
     //assert.equal(result.size, 2);
   });
 
