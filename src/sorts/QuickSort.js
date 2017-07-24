@@ -2,63 +2,41 @@ class QuickSort {
   constructor() {
   }
 
-  sort(arr, l, r) {
-    const m = Math.floor((l + r) / 2);
-    this.sort(arr, l, m);
-    this.sort(arr, m + 1, r);
+  sort(arr, left, right) {
+    var len = arr.length,
+      pivot,
+      partitionIndex;
 
-    merge(arr, left, mid, right);
+    if (left < right) {
+      pivot = right;
+      partitionIndex = this.partition(arr, pivot, left, right);
+
+      //sort left and right
+      this.sort(arr, left, partitionIndex - 1);
+      this.sort(arr, partitionIndex + 1, right);
+    }
+    return arr;
   }
 
-  merge(arr, l, m, r) {
-    // Find sizes of two subarrays to be merged
-    let n1 = m - l + 1;
-    let n2 = r - m;
+  partition(arr, pivot, left, right) {
+    var pivotValue = arr[pivot],
+      partitionIndex = left;
 
-    /* Create temp arrays */
-    let L = new Array(n1);
-    let R = new Array(n2);
-
-    /*Copy data to temp arrays*/
-    for (let i = 0; i < n1; ++i)
-      L[i] = arr[l + i];
-    for (let j = 0; j < n2; ++j)
-      R[j] = arr[m + 1 + j];
-
-
-    /* Merge the temp arrays */
-
-    // Initial indexes of first and second subarrays
-    let i = 0, j = 0;
-
-    // Initial index of merged subarry array
-    let k = l;
-    while (i < n1 && j < n2) {
-      if (L[i] <= R[j]) {
-        arr[k] = L[i];
-        i++;
+    for (var i = left; i < right; i++) {
+      if (arr[i] < pivotValue) {
+        this.swap(arr, i, partitionIndex);
+        partitionIndex++;
       }
-      else {
-        arr[k] = R[j];
-        j++;
-      }
-      k++;
     }
+    this.swap(arr, right, partitionIndex);
+    return partitionIndex;
+  }
 
-    /* Copy remaining elements of L[] if any */
-    while (i < n1) {
-      arr[k] = L[i];
-      i++;
-      k++;
-    }
-
-    /* Copy remaining elements of R[] if any */
-    while (j < n2) {
-      arr[k] = R[j];
-      j++;
-      k++;
-    }
+  swap(arr, i, j) {
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
   }
 }
 
-module.exports = MergeSort;
+module.exports = QuickSort;

@@ -58,13 +58,13 @@ class BinarySearchTree {
 
   findDiameter_recursive(rec_level, node, solution) {
     if (node.left && node.right) {
-      // const leftDepth = Array();
-      // leftDepth.push(1);
-      // const rightDepth = Array();
-      // rightDepth.push(1);
-      // this.findDepth_recursive(rec_level + 1, node.left, leftDepth);
-      // this.findDepth_recursive(rec_level + 1, node.right, rightDepth);
-      // const totalDepth = leftDepth[0] + rightDepth[0];
+      const leftDepth = Array();
+      leftDepth.push(1);
+      const rightDepth = Array();
+      rightDepth.push(1);
+      this.findDepth_recursive(rec_level + 1, node.left, leftDepth);
+      this.findDepth_recursive(rec_level + 1, node.right, rightDepth);
+      const totalDepth = leftDepth[0] + rightDepth[0];
 
 
       if (totalDepth > solution[0]) {
