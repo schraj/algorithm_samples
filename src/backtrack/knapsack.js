@@ -11,52 +11,54 @@ class Knapsack {
     this.items = items;
     this.capacity = capacity;
 
-    this.solutionItems = Array();
     this.maxValueSoFar = 0;
+    this.result = Array();
   }
 
-  getTotalValue() {
-    return this.solutionItems.map((acc, curr) => {
-      acc += curr.value;
+  getTotalValue(solutionList) {
+    return solutionList.reduce((acc, curr) => {
+      return acc + curr.value;
     }, 0);
   }
 
-  isOverCapacity() {
-    const totalWeight = this.solutionItems.map((acc, curr) => {
-      acc += curr.weight;
+  isOverCapacity(solutionList) {
+    const totalWeight = solutionList.reduce((acc, curr) => {
+      return acc + curr.weight;
     }, 0);
 
     return totalWeight > this.capacity;
   }
 
-  fill_rec(remainingList, solutionList, result, arrayStack) {
-    if (this.isOverCapacity()) {
+  fill_rec(remainingList, solutionList, arrayStack) {
+    if (this.isOverCapacity(solutionList)) {
       return;
     }
 
-    const totalValue = this.getTotalValue();
+    const totalValue = this.getTotalValue(solutionList);
     if (totalValue > this.maxValueSoFar) {
       this.maxValueSoFar = totalValue;
-      result = solution.slice();
+      this.result = solutionList.slice();
     }
 
     for (let k = 0; k < remainingList.length; k++) {
       arrayStack.push(remainingList);
       arrayStack.push(solutionList);
-      let newRemainingList = remainingList.splice(k, 1);
+      let newRemainingList = remainingList.slice();
+      let kItem = newRemainingList.splice(k, 1);
       let newSolutionList = solutionList.slice();
-      newSolutionList.push(remainingList[k]);
-      this.tour_rec(newRemainingList, newSolutionList, result, arrayStack);
+      newSolutionList.push(kItem[0]);
+      this.fill_rec(newRemainingList, newSolutionList, arrayStack);
       solutionList = arrayStack.pop();
       remainingList = arrayStack.pop();
     }
   }
 
-  fill(result) {
+  fill() {
     let arrayStack = Array();
     let solutionList = Array();
-    this.fill_rec(this.items, solutionList, result, arrayStack);
+    this.fill_rec(this.items, solutionList, arrayStack);
+    return this.result;
   }
 }
 
-module.exports = Knapsack;
+module.exports = { Knapsack, KnapsackItem };

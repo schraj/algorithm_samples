@@ -10,6 +10,14 @@ class BinarySearchTree {
     return this.contains_recursive(this.root, value);
   }
 
+  height(node) {
+    if (!node) {
+      return 0;
+    }
+
+    return 1 + Math.max(this.height(node.left), this.height(node.right));
+  }
+
   contains_recursive(node, value) {
     let foundNode = null;
     if (node.value === value) {
@@ -39,6 +47,51 @@ class BinarySearchTree {
 
     if (node.right) {
       this.depthFirstLog_recursive(node.right, callback);
+    }
+  }
+
+  findDiameter() {
+    const solution = Array();
+    solution.push(0);
+    this.findDiameter_recursive(0, this.root, solution);
+  }
+
+  findDiameter_recursive(rec_level, node, solution) {
+    if (node.left && node.right) {
+      // const leftDepth = Array();
+      // leftDepth.push(1);
+      // const rightDepth = Array();
+      // rightDepth.push(1);
+      // this.findDepth_recursive(rec_level + 1, node.left, leftDepth);
+      // this.findDepth_recursive(rec_level + 1, node.right, rightDepth);
+      // const totalDepth = leftDepth[0] + rightDepth[0];
+
+
+      if (totalDepth > solution[0]) {
+        solution[0] = totalDepth;
+      }
+    }
+
+    if (node.left) {
+      this.findDiameter_recursive(rec_level + 1, node.right, solution);
+    }
+
+    if (node.right) {
+      this.findDiameter_recursive(rec_level + 1, node.right, solution);
+    }
+  }
+
+  findDepth_recursive(rec_level, node, depth) {
+    if (rec_level > depth[0]) {
+      depth[0] = rec_level;
+    }
+
+    if (node.left) {
+      this.findDepth_recursive(rec_level + 1, node.left, depth);
+    }
+
+    if (node.right) {
+      this.findDepth_recursive(rec_level + 1, node.right, depth);
     }
   }
 
