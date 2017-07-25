@@ -15,10 +15,11 @@ describe('DoublyLinkedList', function () {
         const expected = 0;
         const list = new DoublyLinkedList();
         list.addFirst(2);
-        list.addFirst(1);        
-        assert.equal(list.head.data, 1);
-        assert.equal(list.head.next.data, 2);
-        assert.equal(list.tail.data, 2);
+        list.addFirst(1);
+        assert.equal(list.head.value, 1);
+        assert.equal(list.head.next.value, 2);
+        assert.equal(list.tail.value, 2);
         assert.equal(list.tail.next, null);
+        assert.equal(list.tail.previous.value, 1);
     });
 });
