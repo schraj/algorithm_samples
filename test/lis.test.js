@@ -3,7 +3,7 @@ const LIS2 = require('../src/backtrack/lis2');
 const assert = require('assert');
 
 describe('LIS', function () {
-    xit('LIS1 should find known subsequence', function () {
+    it('LIS1 should find known subsequence', function () {
         let input = [12, 11, 13, 8];
         let lis = new LIS(input);
         lis.find();
